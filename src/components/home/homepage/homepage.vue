@@ -81,7 +81,7 @@ export default {
 .homepage
     margin-top: 50px
     .homepage-roll-container
-        height: 738px
+        height: 100vh
         .homepage-container
             .hot-recommend
                 width: 100%

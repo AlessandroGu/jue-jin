@@ -1,5 +1,6 @@
 <template>
     <div class="find">
+        <div class="find-container">
         <div class="find-head">
             <div class="search-head" @click="letShow">
                 <i class="iconfont search-img">&#xe669;</i>搜索
@@ -36,36 +37,12 @@
             </div>
         </div>
         <div class="boil-wrapper">
-            <div class="boil-container">
+            <div class="boil-container" ref="usamovie">
                 <ul>
-                    <li>
-                        <img src="./image/boil_item_1.png" alt="">
+                    <li v-for="(item, index) in usamovie" :key="index">
+                        <img :src="item.subject.images.small" alt="">
                         <span>
-                            <p>沸点：说到夏天你的第一反应是什么？</p>
-                        </span>
-                    </li>
-                    <li>
-                        <img src="./image/boil_item_2.png" alt="">
-                        <span>
-                            <p>沸点：你认为普通开发者是否有必要学习 AI 相关的知识？前三名送📚</p>
-                        </span>
-                    </li>
-                    <li>
-                        <img src="./image/boil_item_3.png" alt="">
-                        <span>
-                            <p></p>
-                        </span>
-                    </li>
-                    <li>
-                        <img src="./image/boil_item_4.png" alt="">
-                        <span>
-                            <p></p>
-                        </span>
-                    </li>
-                    <li>
-                        <img src="./image/boil_item_5.png" alt="">
-                        <span>
-                            <p></p>
+                            <p>{{item.subject.title}}</p>
                         </span>
                     </li>
                 </ul>
@@ -101,8 +78,10 @@
         <search ref="searchs"></search>
         <listdetail :list="selectList" ref="listdetails"></listdetail>
     </div>
+    </div>
 </template>
 <script>
+import BScroll from 'better-scroll'
 import listdetail from '../listDetail/listDetail.vue'
 import search from '../search/search.vue'
 export default {
@@ -110,7 +89,8 @@ export default {
         return {
             movie: {},
             selectList: {},
-            secShow: false
+            secShow: false,
+            usamovie: {}
         }
     },
     methods: {
@@ -119,15 +99,29 @@ export default {
                 if (response.status === 200) {
                     this.movie = response.data.subjects;
                     console.log(this.movie);
-                    // this.$nextTick(() => {
-                    //     if (!this.scroll) {
-                    //         this.scroll = new BScroll(this.$refs.homepage, {
-                    //             click: true
-                    //         })
-                    //     } else {
-                    //         this.scroll.refresh();
-                    //     }
-                    // })
+                    this.$nextTick(() => {
+                        if (!this.scroll) {
+                            this.scroll = new BScroll(this.$refs.find, {
+                                click: true
+                            })
+                        } else {
+                            this.scroll.refresh();
+                        }
+                    })
+                }
+            })
+        },
+        _getBook() {
+            this.$http.get('/api/movie/us_box').then((response) => {
+                if (response.status === 200) {
+                    this.usamovie = response.data.subjects;
+                    console.log(this.usamovie);
+                    this.$nextTick(() => {
+                        this.scroll = new BScroll(this.$refs.usamovie, {
+                            click: true,
+                            scrollX: true
+                        })
+                    })
                 }
             })
         },
@@ -145,10 +139,13 @@ export default {
     },
     created() {
         this._getData();
+        this._getBook();
     }
 }
 </script>
 <style lang="stylus">
+.find
+    height: 100vh
     .find-head
         width: 100%
         height: 40px
@@ -230,7 +227,7 @@ export default {
             width: auto
             height: 100%
             ul
-                width: 1055px
+                width: 2110px
                 height: 100%
                 padding-left: 10px
                 li
@@ -257,15 +254,16 @@ export default {
                         font-size: 15px
                         box-shadow: inset 180px 10px 5px rgba(0,0,0,.4)
                         p
-                            width: 145px;
-                            height: 35px;
-                            padding-left: 20px;
-                            padding-right: 15px;
-                            padding-top: 25px;
-                            font-size: 15px;
-                            line-height: 18px;
-                            overflow: hidden;
-                            white-space: normal;
+                            width: 145px
+                            height: 35px
+                            padding-left: 20px
+                            padding-right: 15px
+                            padding-top: 25px
+                            font-size: 15px
+                            line-height: 35px
+                            text-align: center
+                            overflow: hidden
+                            white-space: normal
                             text-overflow: ellipsis !important
     .hot-article
         .hot-head
