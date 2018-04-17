@@ -1,7 +1,7 @@
 <template>
     <div class="find">
         <div class="find-head">
-            <div class="search-head">
+            <div class="search-head" @click="letShow">
                 <i class="iconfont search-img">&#xe669;</i>搜索
             </div>
         </div>
@@ -98,16 +98,19 @@
                 </div>
             </div>
         </div>
+        <search ref="searchs"></search>
         <listdetail :list="selectList" ref="listdetails"></listdetail>
     </div>
 </template>
 <script>
 import listdetail from '../listDetail/listDetail.vue'
+import search from '../search/search.vue'
 export default {
     data() {
         return {
             movie: {},
-            selectList: {}
+            selectList: {},
+            secShow: false
         }
     },
     methods: {
@@ -131,10 +134,14 @@ export default {
         clickShow(item) {
             this.selectList = item;
             this.$refs.listdetails.show();
+        },
+        letShow() {
+            this.$refs.searchs.show();
         }
     },
     components: {
-        listdetail
+        listdetail,
+        search
     },
     created() {
         this._getData();
