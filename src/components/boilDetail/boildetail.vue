@@ -14,6 +14,7 @@
         </div>
         <div class="top-img">
             <img src="./image/2.png" alt="">
+            <div class="cover"></div>
             <div class="bottom-img">
                 <div class="left-person">
                     <i class="iconfont">&#xe65d;</i>
@@ -101,6 +102,52 @@
                 </div>
             </div>
         </div>
+        <div class="bottom-comment">
+            <div>
+                <div class="top-avatar">
+                    <div class="avatar-img">
+                        <img src="./image/1.png" alt="">
+                    </div>
+                    <div class="middle-hour">
+                        <p>AlexCheung</p>
+                        <span>16小时前</span>
+                    </div>
+                    <div class="number">
+                        <i class="iconfont">&#xe634;</i>5
+                    </div>
+                </div>
+                <div class="middle-comment">
+                    可以穿体恤衫了， 可以下河游泳了，可以去捉泥鳅了，可以去偷瓜吃了，可以捉知了喂狼狗了，可以去我姨家吃葡萄了，可以去河边捉蛇玩了，四更天可以捉刚破壳的知了，可以到椿树捉椿蹦蹦，可以看西游记了，可以看还珠格格了，又能尿尿和泥玩了！
+                </div>
+                <div class="bottom-icon">
+                    <i class="iconfont">&#xe6c5;</i>
+                    <i class="iconfont">&#xe65d;</i>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-comment">
+            <div>
+                <div class="top-avatar">
+                    <div class="avatar-img">
+                        <img src="./image/1.png" alt="">
+                    </div>
+                    <div class="middle-hour">
+                        <p>AlexCheung</p>
+                        <span>16小时前</span>
+                    </div>
+                    <div class="number">
+                        <i class="iconfont">&#xe634;</i>5
+                    </div>
+                </div>
+                <div class="middle-comment">
+                    可以穿体恤衫了， 可以下河游泳了，可以去捉泥鳅了，可以去偷瓜吃了，可以捉知了喂狼狗了，可以去我姨家吃葡萄了，可以去河边捉蛇玩了，四更天可以捉刚破壳的知了，可以到椿树捉椿蹦蹦，可以看西游记了，可以看还珠格格了，又能尿尿和泥玩了！
+                </div>
+                <div class="bottom-icon">
+                    <i class="iconfont">&#xe6c5;</i>
+                    <i class="iconfont">&#xe65d;</i>
+                </div>
+            </div>
+        </div>
         <div class="bottom-input">
             <div class="icon-uss">
                 <i class="iconfont">&#xe65f;</i>
@@ -158,32 +205,46 @@ export default {
             img
                 width: 100%
                 height: 100%
+            .cover
+                position: absolute
+                left: 0
+                top: 0
+                width: 100%
+                height: 160px
+                box-shadow: inset 15px 160px 5px rgba(0,0,0,.4)
             .bottom-img
                 position: absolute
                 height: 30px
                 bottom: 20px
                 width: 100%
-                background: white
+                // background: white
                 .left-person
+                    position: absolute
+                    display: inline-block
                     float: left
-                    width: 120px
                     height: 30px
                     line-height: 30px
-                    margin-left: 15px
-                    background: #FD8306
+                    width: 120px
                     border-radius: 50px
-                    color: #ffffff
+                    background-color: #FD8306
+                    margin-left: 15px
+                    color: #fff
                     font-size: 14px
                     i 
                         padding-left: 15px
                     span 
                         padding-left: 5px
                 .right-img
+                    width: 350px
                     height: 30px
                     ul
                         li
                             float: right
-                            margin-left: -15px
+                            display: inline-block
+                            height: 30px
+                            width: 30px
+                            border-radius: 50%
+                            margin-left: -12px
                             img
                                 width: 30px
                                 height: 30px
