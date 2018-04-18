@@ -10,6 +10,7 @@ import after from '../components/home/after/after.vue'
 import develop from '../components/home/develop/develop.vue'
 import design from '../components/home/design/design.vue'
 import product from '../components/home/product/product.vue'
+import boildetail from '../components/boilDetail/boildetail.vue'
 // import listdetail from '../components/listDetail/listDetail.vue'
 
 Vue.use(Router)
@@ -29,6 +30,10 @@ export default new Router({
     {
       path: '/find',
       component: find
+    },
+    {
+      path: '/boildetail',
+      component: boildetail
     },
     {
       path: '/',

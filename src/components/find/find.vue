@@ -48,29 +48,31 @@
                 </ul>
             </div>
         </div>
-        <div class="hot-article">
-            <div class="hot-head">
-                <div class="left-icon">
-                    <img src="./image/hot_red.png" alt="">
-                    <span>热门文章</span>
-                </div>
-                <div class="right-icon">
-                    <i class="iconfont">&#xe77e;</i>
-                    <span>定制热门</span>
-                </div>
-            </div>
-            <div class="foreach" v-for="(item, index) in movie" :key="index">
-                <div class="hot-list" @click="clickShow(item)">
-                    <div class="hot-info">
-                        <p>{{item.title}}</p>
-                        <div class="bottom-desc">
-                            <i class="iconfont">&#xe641;<span>10</span></i>
-                            <i class="iconfont">&#xe631;<span>渔人码头</span></i>
-                            <i class="iconfont">&#xe603;<span>40分钟前</span></i>
-                        </div>
+        <div class="include" ref="find">
+            <div class="hot-article">
+                <div class="hot-head">
+                    <div class="left-icon">
+                        <img src="./image/hot_red.png" alt="">
+                        <span>热门文章</span>
                     </div>
-                    <div class="hot-img">
-                        <img src="./image/001.png" alt="">
+                    <div class="right-icon">
+                        <i class="iconfont">&#xe77e;</i>
+                        <span>定制热门</span>
+                    </div>
+                </div>
+                <div class="foreach" v-for="(item, index) in movie" :key="index">
+                    <div class="hot-list" @click="clickShow(item)">
+                        <div class="hot-info">
+                            <p>{{item.title}}</p>
+                            <div class="bottom-desc">
+                                <i class="iconfont">&#xe641;<span>10</span></i>
+                                <i class="iconfont">&#xe631;<span>渔人码头</span></i>
+                                <i class="iconfont">&#xe603;<span>40分钟前</span></i>
+                            </div>
+                        </div>
+                        <div class="hot-img">
+                            <img src="./image/001.png" alt="">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -99,15 +101,15 @@ export default {
                 if (response.status === 200) {
                     this.movie = response.data.subjects;
                     console.log(this.movie);
-                    this.$nextTick(() => {
-                        if (!this.scroll) {
-                            this.scroll = new BScroll(this.$refs.find, {
-                                click: true
-                            })
-                        } else {
-                            this.scroll.refresh();
-                        }
-                    })
+                    // this.$nextTick(() => {
+                    //     if (!this.scroll) {
+                    //         this.scroll = new BScroll(this.$refs.find, {
+                    //             click: true
+                    //         })
+                    //     } else {
+                    //         this.scroll.refresh();
+                    //     }
+                    // })
                 }
             })
         },
@@ -265,55 +267,57 @@ export default {
                             overflow: hidden
                             white-space: normal
                             text-overflow: ellipsis !important
-    .hot-article
-        .hot-head
-            width: 100%
-            height: 45px
-            line-height: 45px
-            background: #ffffff
-            margin-top: 10px
-            display: flex
-            box-shadow: inset 0px -1px 1px -1px #A7A7AB
-            .left-icon
-                flex: 1
-                margin-left: 10px
-                img
-                    width: 20px
-                    height: 20px
-                    vertical-align: text-bottom
-                span
-                    display: inline-block
-                    padding-left: 5px
-                    font-size: 15px
-            .right-icon
-                flex: 1
-                text-align: right
-                margin-right: 10px
-        .foreach
-            .hot-list
-                height: 100px
+    .include
+        height: 145px    
+        .hot-article
+            .hot-head
+                width: 100%
+                height: 45px
+                line-height: 45px
+                background: #ffffff
+                margin-top: 10px
                 display: flex
-                background: #fff
-                box-shadow: inset 0px -1px 1px -1px #a7a7ab;
-                .hot-info
+                box-shadow: inset 0px -1px 1px -1px #A7A7AB
+                .left-icon
                     flex: 1
-                    padding-top: 20px
-                    padding-left: 10px
-                    p
-                        color: black
-                    .bottom-desc
-                        padding-top: 5px
-                        i
-                            font-size: 10px
-                .hot-img
-                    flex: 60px 0 0
+                    margin-left: 10px
+                    img
+                        width: 20px
+                        height: 20px
+                        vertical-align: text-bottom
+                    span
+                        display: inline-block
+                        padding-left: 5px
+                        font-size: 15px
+                .right-icon
+                    flex: 1
                     text-align: right
-                    width: 60px
-                    height: 60px
-                    padding-top: 20px
-                    padding-right: 10px
-                    img 
-                        width: 100%
-                        height: 100%
+                    margin-right: 10px
+            .foreach
+                .hot-list
+                    height: 100px
+                    display: flex
+                    background: #fff
+                    box-shadow: inset 0px -1px 1px -1px #a7a7ab;
+                    .hot-info
+                        flex: 1
+                        padding-top: 20px
+                        padding-left: 10px
+                        p
+                            color: black
+                        .bottom-desc
+                            padding-top: 5px
+                            i
+                                font-size: 10px
+                    .hot-img
+                        flex: 60px 0 0
+                        text-align: right
+                        width: 60px
+                        height: 60px
+                        padding-top: 20px
+                        padding-right: 10px
+                        img 
+                            width: 100%
+                            height: 100%
 
 </style>
